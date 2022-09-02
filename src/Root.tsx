@@ -19,6 +19,7 @@ const Root = () => {
     palette: {
       primary: {
         main: "#7FCA93",
+        // main: "#FF8686",
         contrastText: "#FFFFFF",
       }
     }

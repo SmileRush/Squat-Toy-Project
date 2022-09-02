@@ -23,6 +23,9 @@ export function useRecordsStatus() {
   const restCount                 = goalCount - doneCount
 
   useEffect(() => {
+    if (goalCount !== 10000) {
+      setDoneCount(restCount)
+    }
     if (restCount === 0) {
       setRecords(
         produce(records, draft => {
@@ -30,7 +33,7 @@ export function useRecordsStatus() {
         })
       )
     }
-  }, [restCount])
+  }, [goalCount, restCount])
 
   const saveRecord = (addCount: number) => {
     if (doneCount + addCount >= goalCount) {
