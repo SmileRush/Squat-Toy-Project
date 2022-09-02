@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+html > body,
+html > body input,
+html > body select,
+html > body textarea,
+html > body pre,
+html > body button {
+  /* font-family             : "monospace"; */
+  color                   : #333;
+  text-underline-position : under;
+  line-height             : 1.3;
+}
+
+body {
+  font-size: 1rem;
+}
+
+.font-mono {
+  font-family: 'Roboto Mono', monospace;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+#confetti-canvas {
+  z-index        : 2500 !important;
+  position       : fixed;
+  top            : 0;
+  left           : 0;
+  width          : 100%;
+  height         : 100%;
+  pointer-events : none;
+}
+
+
+/* #root > *:nth-child(2) {
+  flex-grow: 1;
+} */
+
+/*# Overlay Scrollbar Start */
+:root {
+  /* overflow-y: overlay; */
+  /* 
+    overflow-y: overlay; 를 적용하면 스크롤 내린 상태에서,
+    Modal(SwipeableDrawer)를 열었다 끄면, 
+    화면이 다시 최상단으로 올라가있음.
+    그래서 overflow-y: overlay; 를 해결할 때 까지 꺼 놓을것
+  */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(45,45,45,0.3);
+	border-radius: 0;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+	height: 10px;
+}
+/*# Overlay Scrollbar End */
