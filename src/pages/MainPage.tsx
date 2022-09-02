@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from '@mui/material'
 import RecordAddModal from '../components/RecordAddModal'
 import { useRecordModalStatus } from '../states/useRecordModalStatus'
@@ -6,8 +6,15 @@ import { useRecordsStatus } from '../states/useRecordsStatus'
 import CountNumber from '../utils/components/CountNumber'
 
 const MainPage = () => {
-  const recordsStatus     = useRecordsStatus()
-  const recordModalStatus = useRecordModalStatus()
+  const recordsStatus             = useRecordsStatus()
+  const recordModalStatus         = useRecordModalStatus()
+  const [restCount, setRestCount] = useState(0)
+
+  useEffect(() => {
+    if (recordsStatus.restCount !== 10000) {
+      setRestCount(recordsStatus.restCount)
+    }
+  }, [])
 
   return (
     <>
@@ -17,7 +24,7 @@ const MainPage = () => {
           <div className = 'text-[100px] text-[color:var(--mui-color-primary-main)] font-mono'>
             <CountNumber
               startNumber = {recordsStatus.goalCount}
-              endNumber   = {recordsStatus.restCount}
+              endNumber   = {restCount}
               duration    = {3}
             />
           </div>

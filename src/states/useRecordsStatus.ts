@@ -22,15 +22,15 @@ export function useRecordsStatus() {
   const [doneCount, setDoneCount] = useRecoilState(doneCountAtom)
   const restCount                 = goalCount - doneCount
 
-  // useEffect(() => {
-  //   if (restCount === 0) {
-  //     setRecords(
-  //       produce(records, draft => {
-  //         draft[0].content = '\n10000회 목표에 달성했습니다.\n정말 수고 많으셨습니다~^^'
-  //       })
-  //     )
-  //   }
-  // }, [restCount])
+  useEffect(() => {
+    if (restCount === 0) {
+      setRecords(
+        produce(records, draft => {
+          draft[0].content = '\n10000회 목표에 달성했습니다.\n정말 수고 많으셨습니다~^^'
+        })
+      )
+    }
+  }, [restCount])
 
   const saveRecord = (addCount: number) => {
     if (doneCount + addCount >= goalCount) {
